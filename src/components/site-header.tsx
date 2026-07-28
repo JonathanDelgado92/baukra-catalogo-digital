@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { BaukraMark } from "@/components/baukra-logo";
 import { waLink } from "@/lib/whatsapp";
+import { GooeyNav } from "@/components/ui/gooey-nav";
 
 const links = [
   { href: "#servicios", label: "Servicios" },
@@ -36,16 +37,8 @@ export function SiteHeader() {
           BAUKRA
         </Link>
 
-        <div className="hidden items-center gap-6 text-sm text-white/70 md:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="border-b border-transparent py-1 transition-colors hover:border-brand-green hover:text-white"
-            >
-              {l.label}
-            </a>
-          ))}
+        <div className="hidden md:block">
+          <GooeyNav items={links} initialActiveIndex={0} />
         </div>
 
         <a

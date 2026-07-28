@@ -1,6 +1,7 @@
 import { catalogBenefits, catalogExamples } from "@/lib/data";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { ScrollFloat } from "@/components/ui/scroll-float";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { MagicCard } from "@/components/ui/magic-card";
 
 export function CasesSection() {
   return (
@@ -12,7 +13,7 @@ export function CasesSection() {
               <span className="h-px w-6 bg-brand-green" />
               Por qué un catálogo digital
             </div>
-            <ScrollFloat
+            <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
               segments={[{ text: "Un enlace que " }, { text: "organiza todo.", className: "text-brand-green" }]}
             />
@@ -38,7 +39,7 @@ export function CasesSection() {
         <div className="grid gap-4 md:grid-cols-3">
           {catalogExamples.map((c, i) => (
             <BlurFade key={c.who} inView delay={i * 0.08}>
-              <article className="h-full rounded-[1.5rem] border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
+              <MagicCard className="h-full rounded-[1.5rem] border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
                 <h3 className="font-display text-lg font-semibold">{c.who}</h3>
                 <p className="mt-1 text-xs text-muted-foreground">Categorías sugeridas</p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -51,7 +52,7 @@ export function CasesSection() {
                     </span>
                   ))}
                 </div>
-              </article>
+              </MagicCard>
             </BlurFade>
           ))}
         </div>

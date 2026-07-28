@@ -161,6 +161,38 @@
   }
 }
 
+/* Ink-swap hover: border/transparent by default, fills with --ink on hover,
+   label crossfades to --surface. Used on secondary/outline buttons. */
+.ink-swap {
+  --ink: #ffffff;
+  --surface: #1d1d1b;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ink-swap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ink-swap:hover {
+  color: var(--surface);
+}
+.ink-swap:hover::before {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ink-swap::before {
+    transition: none;
+  }
+}
+
 .grain {
   position: fixed;
   inset: 0;

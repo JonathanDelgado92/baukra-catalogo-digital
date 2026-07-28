@@ -1,5 +1,5 @@
 import { waLink } from "@/lib/whatsapp";
-import { ScrollFloat } from "@/components/ui/scroll-float";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const benefits = [
   { b: "Orden", d: "Categorías, fichas y navegación clara." },
@@ -25,7 +25,7 @@ export function CatalogShowcase() {
               <span className="h-px w-6 bg-brand-green" />
               Producto destacado
             </div>
-            <ScrollFloat
+            <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.1rem,4.6vw,4.1rem)] font-semibold leading-[0.97] tracking-tight"
               segments={[{ text: "Catálogos que hacen más fácil " }, { text: "comprar.", className: "text-brand-green" }]}
             />

@@ -1,5 +1,6 @@
 import { addonGroups } from "@/lib/data";
-import { ScrollFloat } from "@/components/ui/scroll-float";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { MagicCard } from "@/components/ui/magic-card";
 
 export function AddonsSection() {
   return (
@@ -11,9 +12,9 @@ export function AddonsSection() {
               <span className="h-px w-6 bg-brand-green" />
               Servicios adicionales
             </div>
-            <ScrollFloat containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
+            <ScrollReveal containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
               Escala tu proyecto cuando lo necesites.
-            </ScrollFloat>
+            </ScrollReveal>
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
             Complementos para personalizar cada solución sin cargar el precio
@@ -23,7 +24,7 @@ export function AddonsSection() {
 
         <div className="grid gap-4 md:grid-cols-3">
           {addonGroups.map((group) => (
-            <div
+            <MagicCard
               key={group.title}
               className="flex flex-col rounded-[1.6rem] border border-border bg-white p-7"
             >
@@ -37,7 +38,7 @@ export function AddonsSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </MagicCard>
           ))}
         </div>
         <p className="mt-7 max-w-2xl text-sm text-muted-foreground">

@@ -1,5 +1,6 @@
 import { BlurFade } from "@/components/ui/blur-fade";
-import { ScrollFloat } from "@/components/ui/scroll-float";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { MagicCard } from "@/components/ui/magic-card";
 
 const items = [
   {
@@ -33,11 +34,9 @@ export function BenefitsSection() {
             <span className="h-px w-6 bg-brand-green" />
             Por qué BAUKRA
           </div>
-          <ScrollFloat
-            containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.95] tracking-tight"
-          >
+          <ScrollReveal containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.95] tracking-tight">
             Más que una página bonita.
-          </ScrollFloat>
+          </ScrollReveal>
           <p className="mt-5 max-w-md text-muted-foreground">
             Convertimos la información de tu negocio en una experiencia digital
             clara, ordenada y lista para vender.
@@ -46,7 +45,7 @@ export function BenefitsSection() {
         <div className="grid gap-3.5">
           {items.map((it, i) => (
             <BlurFade key={it.n} inView delay={i * 0.08}>
-              <div className="grid grid-cols-[3rem_1fr] gap-4 rounded-[1.4rem] border border-border bg-card p-6 shadow-[0_8px_30px_rgba(25,28,22,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
+              <MagicCard className="grid grid-cols-[3rem_1fr] gap-4 rounded-[1.4rem] border border-border bg-card p-6 shadow-[0_8px_30px_rgba(25,28,22,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
                 <div className="flex size-11 items-center justify-center rounded-2xl bg-brand-green-soft font-display text-sm font-bold text-brand-green">
                   {it.n}
                 </div>
@@ -54,7 +53,7 @@ export function BenefitsSection() {
                   <h3 className="font-display text-base font-semibold">{it.title}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{it.body}</p>
                 </div>
-              </div>
+              </MagicCard>
             </BlurFade>
           ))}
         </div>

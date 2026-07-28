@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ElectricBorder } from "@/components/ui/electric-border";
-import { ScrollFloat } from "@/components/ui/scroll-float";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { MagicCard } from "@/components/ui/magic-card";
 import { landingPlans, catalogPlans, webPlans, type Plan } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -15,8 +16,9 @@ const groups = [
 ];
 
 function PlanCardInner({ plan }: { plan: Plan }) {
+  const Wrapper = plan.featured ? "article" : MagicCard;
   return (
-    <article
+    <Wrapper
       className={cn(
         "group/card relative flex min-h-[36rem] flex-col overflow-hidden rounded-[1.6rem] border p-7 transition-transform duration-300 hover:-translate-y-1.5",
         plan.featured
@@ -89,7 +91,7 @@ function PlanCardInner({ plan }: { plan: Plan }) {
       <div className={cn("mt-3.5 text-center text-xs", plan.featured ? "text-white/50" : "text-muted-foreground")}>
         {plan.note}
       </div>
-    </article>
+    </Wrapper>
   );
 }
 
@@ -115,7 +117,7 @@ export function PricingSection() {
               <span className="h-px w-6 bg-brand-green" />
               Servicios y precios
             </div>
-            <ScrollFloat
+            <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
               segments={[{ text: "Elige la solución " }, { text: "correcta.", className: "text-brand-green" }]}
             />

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { waLink } from "@/lib/whatsapp";
-import { ScrollFloat } from "@/components/ui/scroll-float";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export function ContactSection() {
   const params = useSearchParams();
@@ -47,9 +47,9 @@ export function ContactSection() {
               <span className="h-px w-6 bg-brand-green" />
               Conversemos
             </div>
-            <ScrollFloat containerClassName="mt-4 max-w-lg font-display text-[clamp(1.7rem,2.9vw,2.6rem)] font-semibold leading-[1.15] tracking-tight">
+            <ScrollReveal containerClassName="mt-4 max-w-lg font-display text-[clamp(1.7rem,2.9vw,2.6rem)] font-semibold leading-[1.15] tracking-tight">
               Tu negocio ya tiene algo que mostrar. Hagamos que sea más fácil encontrarlo, entenderlo y elegirlo.
-            </ScrollFloat>
+            </ScrollReveal>
             <p className="mt-5 max-w-md text-white/65">
               Cuéntanos qué vendes, cuántos productos o servicios necesitas
               presentar y qué resultado esperas. Te recomendaremos la solución
@@ -72,7 +72,8 @@ export function ContactSection() {
                 target="_blank"
                 rel="noopener"
                 data-whatsapp-click="cta-final-secondary"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
+                className="ink-swap inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-4 text-sm font-semibold transition-transform hover:-translate-y-0.5"
+                style={{ ["--ink" as string]: "#ffffff", ["--surface" as string]: "#1d1d1b" }}
               >
                 Necesito orientación
               </a>

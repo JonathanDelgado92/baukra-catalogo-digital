@@ -1,5 +1,6 @@
 import { process } from "@/lib/data";
-import { ScrollFloat } from "@/components/ui/scroll-float";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { MagicCard } from "@/components/ui/magic-card";
 
 export function ProcessSection() {
   return (
@@ -11,7 +12,7 @@ export function ProcessSection() {
               <span className="h-px w-6 bg-brand-green" />
               Metodología BAUKRA
             </div>
-            <ScrollFloat
+            <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
               segments={[{ text: "Un proceso claro, de principio a " }, { text: "lanzamiento.", className: "text-brand-green" }]}
             />
@@ -25,14 +26,14 @@ export function ProcessSection() {
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p) => (
-            <article
+            <MagicCard
               key={p.step}
               className="min-h-[14rem] rounded-[1.5rem] border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-brand-green/50"
             >
               <div className="font-display text-4xl font-bold tracking-tight text-brand-green">{p.step}</div>
               <h3 className="mt-5 font-display text-lg font-semibold">{p.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.body}</p>
-            </article>
+            </MagicCard>
           ))}
         </div>
       </div>

@@ -23,16 +23,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="md:flex md:items-start md:gap-8"
         >
-          <ul
-            aria-hidden="true"
-            className="hidden shrink-0 flex-col gap-2.5 pt-3 text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-white/40 lg:flex"
-          >
-            {chips.slice(0, 5).map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
               <span className="h-px w-6 bg-brand-green" />
@@ -61,7 +52,8 @@ export function Hero() {
               target="_blank"
               rel="noopener"
               data-whatsapp-click="hero-secondary"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
+              className="ink-swap inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-4 text-sm font-semibold transition-transform hover:-translate-y-0.5"
+              style={{ ["--ink" as string]: "#ffffff", ["--surface" as string]: "#1d1d1b" }}
             >
               Cuéntame qué necesitas
             </a>
