@@ -1,5 +1,6 @@
 import { catalogBenefits, catalogExamples } from "@/lib/data";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 
 export function CasesSection() {
   return (
@@ -11,9 +12,10 @@ export function CasesSection() {
               <span className="h-px w-6 bg-brand-green" />
               Por qué un catálogo digital
             </div>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
-              Un enlace que <span className="text-brand-green">organiza todo.</span>
-            </h2>
+            <ScrollFloat
+              containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
+              segments={[{ text: "Un enlace que " }, { text: "organiza todo.", className: "text-brand-green" }]}
+            />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
             Un catálogo digital te ayuda a presentar tu negocio de forma más clara

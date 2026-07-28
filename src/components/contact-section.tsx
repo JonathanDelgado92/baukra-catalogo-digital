@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { waLink } from "@/lib/whatsapp";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 
 export function ContactSection() {
   const params = useSearchParams();
@@ -46,10 +47,9 @@ export function ContactSection() {
               <span className="h-px w-6 bg-brand-green" />
               Conversemos
             </div>
-            <h2 className="mt-4 max-w-lg font-display text-[clamp(1.7rem,2.9vw,2.6rem)] font-semibold leading-[1.15] tracking-tight text-balance">
-              Tu negocio ya tiene algo que mostrar. Hagamos que sea más fácil
-              encontrarlo, entenderlo y elegirlo.
-            </h2>
+            <ScrollFloat containerClassName="mt-4 max-w-lg font-display text-[clamp(1.7rem,2.9vw,2.6rem)] font-semibold leading-[1.15] tracking-tight">
+              Tu negocio ya tiene algo que mostrar. Hagamos que sea más fácil encontrarlo, entenderlo y elegirlo.
+            </ScrollFloat>
             <p className="mt-5 max-w-md text-white/65">
               Cuéntanos qué vendes, cuántos productos o servicios necesitas
               presentar y qué resultado esperas. Te recomendaremos la solución

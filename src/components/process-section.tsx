@@ -1,4 +1,5 @@
 import { process } from "@/lib/data";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 
 export function ProcessSection() {
   return (
@@ -10,9 +11,10 @@ export function ProcessSection() {
               <span className="h-px w-6 bg-brand-green" />
               Metodología BAUKRA
             </div>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
-              Un proceso claro, de principio a <span className="text-brand-green">lanzamiento.</span>
-            </h2>
+            <ScrollFloat
+              containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
+              segments={[{ text: "Un proceso claro, de principio a " }, { text: "lanzamiento.", className: "text-brand-green" }]}
+            />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
             La inteligencia artificial acelera la producción, pero la estrategia,

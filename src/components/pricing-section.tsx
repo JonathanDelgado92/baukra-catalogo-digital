@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ElectricBorder } from "@/components/ui/electric-border";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 import { landingPlans, catalogPlans, webPlans, type Plan } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -114,9 +115,10 @@ export function PricingSection() {
               <span className="h-px w-6 bg-brand-green" />
               Servicios y precios
             </div>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
-              Elige la solución <span className="text-brand-green">correcta.</span>
-            </h2>
+            <ScrollFloat
+              containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
+              segments={[{ text: "Elige la solución " }, { text: "correcta.", className: "text-brand-green" }]}
+            />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
             Tres soluciones para negocios ecuatorianos que necesitan una presencia

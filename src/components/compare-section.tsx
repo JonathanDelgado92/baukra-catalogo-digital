@@ -1,4 +1,5 @@
 import { compareRows } from "@/lib/data";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 
 export function CompareSection() {
   return (
@@ -10,9 +11,10 @@ export function CompareSection() {
               <span className="h-px w-6 bg-brand-green" />
               Comparativa rápida
             </div>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
-              ¿Qué necesita <span className="text-brand-green">tu negocio?</span>
-            </h2>
+            <ScrollFloat
+              containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
+              segments={[{ text: "¿Qué necesita " }, { text: "tu negocio?", className: "text-brand-green" }]}
+            />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
             La elección depende de cuánta información debes presentar, qué acción

@@ -1,4 +1,5 @@
 import { addonGroups } from "@/lib/data";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 
 export function AddonsSection() {
   return (
@@ -10,9 +11,9 @@ export function AddonsSection() {
               <span className="h-px w-6 bg-brand-green" />
               Servicios adicionales
             </div>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
+            <ScrollFloat containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
               Escala tu proyecto cuando lo necesites.
-            </h2>
+            </ScrollFloat>
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
             Complementos para personalizar cada solución sin cargar el precio

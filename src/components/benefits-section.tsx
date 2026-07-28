@@ -1,4 +1,5 @@
 import { BlurFade } from "@/components/ui/blur-fade";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 
 const items = [
   {
@@ -32,9 +33,11 @@ export function BenefitsSection() {
             <span className="h-px w-6 bg-brand-green" />
             Por qué BAUKRA
           </div>
-          <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.95] tracking-tight">
+          <ScrollFloat
+            containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.95] tracking-tight"
+          >
             Más que una página bonita.
-          </h2>
+          </ScrollFloat>
           <p className="mt-5 max-w-md text-muted-foreground">
             Convertimos la información de tu negocio en una experiencia digital
             clara, ordenada y lista para vender.

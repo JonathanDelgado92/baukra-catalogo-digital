@@ -5,6 +5,7 @@ import { motion, useInView } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import { faqs } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { ScrollFloat } from "@/components/ui/scroll-float";
 
 function FaqRow({ q, a, index, delay }: { q: string; a: string; index: number; delay: number }) {
   const ref = useRef(null);
@@ -63,9 +64,10 @@ export function FaqSection() {
               <span className="h-px w-6 bg-brand-green" />
               Preguntas frecuentes
             </div>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
-              Antes de <span className="text-brand-green">escribirnos.</span>
-            </h2>
+            <ScrollFloat
+              containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
+              segments={[{ text: "Antes de " }, { text: "escribirnos.", className: "text-brand-green" }]}
+            />
           </div>
           <p className="max-w-md text-white/65 md:justify-self-end">
             Las dudas más comunes sobre tiempos, contenido, edición y pagos.
