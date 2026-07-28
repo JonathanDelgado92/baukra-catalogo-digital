@@ -1,79 +1,83 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { AnimatedList } from "@/components/ui/animated-list";
+import { useRef, useState } from "react";
+import { motion, useInView } from "motion/react";
+import { ChevronDown } from "lucide-react";
 import { faqs } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
-export function FaqSection() {
-  const [openValue, setOpenValue] = useState<number[]>([]);
-  const [activeIndex, setActiveIndex] = useState(-1);
-
-  function jumpTo(index: number) {
-    setOpenValue([index]);
-    setActiveIndex(index);
-    requestAnimationFrame(() => {
-      document.getElementById(`faq-item-${index}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-  }
+function FaqRow({ q, a, index, delay }: { q: string; a: string; index: number; delay: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { amount: 0.4, once: false });
+  const [open, setOpen] = useState(false);
 
   return (
-    <section id="preguntas" className="bg-background py-24 md:py-32">
+    <motion.div
+      ref={ref}
+      initial={{ scale: 0.7, opacity: 0 }}
+      animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.7, opacity: 0 }}
+      transition={{ duration: 0.2, delay }}
+      className="mb-3 last:mb-0"
+    >
+      <div
+        className={cn(
+          "rounded-2xl border transition-colors",
+          open ? "border-brand-green/50 bg-brand-green-soft" : "border-border bg-brand-paper hover:border-brand-green/30",
+        )}
+      >
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls={`faq-answer-${index}`}
+          className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+        >
+          <span className="font-display text-sm font-semibold text-brand-black">{q}</span>
+          <ChevronDown
+            aria-hidden="true"
+            className={cn("size-4 shrink-0 text-brand-green transition-transform duration-300", open && "rotate-180")}
+          />
+        </button>
+        <div
+          className="grid transition-[grid-template-rows] duration-300 ease-out"
+          style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+        >
+          <div className="overflow-hidden">
+            <p id={`faq-answer-${index}`} className="px-5 pb-4 text-sm text-muted-foreground">
+              {a}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export function FaqSection() {
+  return (
+    <section id="preguntas" className="dark bg-brand-black py-24 text-white md:py-32">
       <div className="mx-auto w-[min(calc(100%-2.5rem),75rem)]">
-        <div className="mb-11 grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-start">
+        <div className="mb-11 grid gap-8 md:grid-cols-2 md:items-end">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-black/70">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
               <span className="h-px w-6 bg-brand-green" />
               Preguntas frecuentes
             </div>
             <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
               Antes de <span className="text-brand-green">escribirnos.</span>
             </h2>
-            <p className="mt-4 max-w-md text-muted-foreground">
-              Las dudas más comunes sobre tiempos, contenido, edición y pagos.
-              Toca una pregunta en la lista para saltar directo a la respuesta.
-            </p>
           </div>
-
-          <div className="dark h-[26rem] overflow-hidden rounded-[1.6rem] border border-white/10 bg-brand-black">
-            <AnimatedList
-              items={faqs.map((f) => f.q)}
-              onItemSelect={(_, index) => jumpTo(index)}
-              selectedIndex={activeIndex}
-              className="h-full"
-            />
-          </div>
+          <p className="max-w-md text-white/65 md:justify-self-end">
+            Las dudas más comunes sobre tiempos, contenido, edición y pagos.
+            Toca una pregunta para ver la respuesta.
+          </p>
         </div>
 
-        <Accordion
-          value={openValue}
-          onValueChange={(v) => {
-            setOpenValue(v as number[]);
-            setActiveIndex((v as number[])[0] ?? -1);
-          }}
-          className="max-w-3xl"
-        >
+        <div className="mx-auto max-h-[34rem] max-w-3xl overflow-y-auto rounded-[1.6rem] bg-white p-5 shadow-[0_24px_70px_rgba(0,0,0,0.35)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-black/10 [&::-webkit-scrollbar-track]:bg-transparent">
           {faqs.map((f, i) => (
-            <AccordionItem
-              key={f.q}
-              id={`faq-item-${i}`}
-              value={i}
-              className="scroll-mt-28 rounded-2xl border border-border bg-brand-paper px-6 mb-3 data-[state=open]:border-brand-green/50"
-            >
-              <AccordionTrigger className="py-5 text-left font-display text-base font-semibold hover:no-underline">
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent className="max-w-2xl text-sm text-muted-foreground">
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
+            <FaqRow key={f.q} q={f.q} a={f.a} index={i} delay={i * 0.04} />
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   );

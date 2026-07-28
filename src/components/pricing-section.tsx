@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { ElectricBorder } from "@/components/ui/electric-border";
 import { landingPlans, catalogPlans, webPlans, type Plan } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -12,16 +13,22 @@ const groups = [
   { value: "web", label: "Páginas web", plans: webPlans },
 ];
 
-function PlanCard({ plan }: { plan: Plan }) {
+function PlanCardInner({ plan }: { plan: Plan }) {
   return (
     <article
       className={cn(
-        "relative flex min-h-[36rem] flex-col overflow-hidden rounded-[1.6rem] border p-7 transition-transform duration-300 hover:-translate-y-1.5",
+        "group/card relative flex min-h-[36rem] flex-col overflow-hidden rounded-[1.6rem] border p-7 transition-transform duration-300 hover:-translate-y-1.5",
         plan.featured
-          ? "dark border-brand-black bg-brand-black text-white shadow-[0_24px_70px_rgba(15,17,13,0.18)]"
+          ? "dark h-full border-brand-black bg-brand-black text-white shadow-[0_24px_70px_rgba(15,17,13,0.18)]"
           : "border-border bg-background",
       )}
     >
+      {!plan.featured && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-1.5 origin-left scale-x-0 bg-brand-green transition-transform duration-300 ease-out group-hover/card:scale-x-100"
+        />
+      )}
       {plan.featured && (
         <span className="absolute right-[-2.6rem] top-6 rotate-[37deg] bg-brand-green px-12 py-2 text-[0.6rem] font-extrabold uppercase tracking-[0.1em] text-white">
           Recomendado
@@ -82,6 +89,16 @@ function PlanCard({ plan }: { plan: Plan }) {
         {plan.note}
       </div>
     </article>
+  );
+}
+
+function PlanCard({ plan }: { plan: Plan }) {
+  if (!plan.featured) return <PlanCardInner plan={plan} />;
+
+  return (
+    <ElectricBorder color="#42ab38" speed={0.9} chaos={0.05} borderRadius={26} className="h-full">
+      <PlanCardInner plan={plan} />
+    </ElectricBorder>
   );
 }
 
