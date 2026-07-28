@@ -21,21 +21,25 @@ export function CasesSection() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {useCases.map((c, i) => (
-            <BlurFade key={c.who} inView delay={i * 0.07}>
-              <article className="h-full rounded-[1.5rem] border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
-                <div className="text-[0.68rem] font-extrabold uppercase tracking-[0.1em] text-brand-green">
-                  {c.who}
-                </div>
-                <h3 className="mt-2.5 font-display text-lg font-semibold">{c.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{c.body}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand-green-soft px-3.5 py-2 text-sm font-semibold text-[#2a7423]">
-                  {c.rec}
-                </span>
-              </article>
-            </BlurFade>
-          ))}
+        <div className="grid gap-4 md:grid-cols-12">
+          {useCases.map((c, i) => {
+            const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-5", "md:col-span-7"];
+            const offsets = ["", "md:mt-12", "", "md:mt-12"];
+            return (
+              <BlurFade key={c.who} inView delay={i * 0.07} className={`${spans[i]} ${offsets[i]}`}>
+                <article className="h-full rounded-[1.5rem] border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
+                  <div className="text-[0.68rem] font-extrabold uppercase tracking-[0.1em] text-brand-green">
+                    {c.who}
+                  </div>
+                  <h3 className="mt-2.5 font-display text-lg font-semibold">{c.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{c.body}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand-green-soft px-3.5 py-2 text-sm font-semibold text-[#2a7423]">
+                    {c.rec}
+                  </span>
+                </article>
+              </BlurFade>
+            );
+          })}
         </div>
         <p className="mt-7 text-sm text-muted-foreground/80">
           ¿No encuentras tu tipo de negocio? Cuéntanos por WhatsApp qué vendes y

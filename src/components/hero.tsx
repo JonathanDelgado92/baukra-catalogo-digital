@@ -23,16 +23,26 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="md:flex md:items-start md:gap-8"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
-            <span className="h-px w-6 bg-brand-green" />
-            Estudio digital · Ecuador
-          </div>
-          <h1 className="mt-6 font-display text-[clamp(2.75rem,7.2vw,6.6rem)] font-semibold leading-[0.9] tracking-tight">
-            Diseño que
-            <span className="block text-brand-green">activa marcas.</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/70">
+          <ul
+            aria-hidden="true"
+            className="hidden shrink-0 flex-col gap-2.5 pt-3 text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-white/40 lg:flex"
+          >
+            {chips.slice(0, 5).map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+              <span className="h-px w-6 bg-brand-green" />
+              Estudio digital · Ecuador
+            </div>
+            <h1 className="mt-6 font-display text-[clamp(2.75rem,7.2vw,6.6rem)] font-semibold leading-[0.8] tracking-tight">
+              Diseño que
+              <span className="block text-brand-green">activa marcas.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-white/70">
             Landing pages, catálogos digitales y páginas web diseñadas a medida, con
             dirección visual, estrategia de conversión e inteligencia artificial
             aplicada bajo criterio profesional.
@@ -69,6 +79,7 @@ export function Hero() {
               Escríbenos y te orientamos →
             </a>
           </p>
+          </div>
         </motion.div>
 
         <motion.div
