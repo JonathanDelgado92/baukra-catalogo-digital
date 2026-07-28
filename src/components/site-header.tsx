@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { BaukraMark } from "@/components/baukra-logo";
+import { BaukraWordmark } from "@/components/baukra-logo";
 import { waLink } from "@/lib/whatsapp";
 import { GooeyNav } from "@/components/ui/gooey-nav";
 
@@ -32,9 +32,8 @@ export function SiteHeader() {
         aria-label="Navegación principal"
         className="dark mx-auto flex w-[min(calc(100%-1.75rem),78rem)] items-center justify-between gap-6 rounded-full border border-white/10 bg-black/75 px-3 py-2.5 pl-5 text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl"
       >
-        <Link href="#inicio" className="flex items-center gap-2.5 font-display text-sm font-semibold tracking-[0.08em]">
-          <BaukraMark className="h-6 w-auto" />
-          BAUKRA
+        <Link href="#inicio" aria-label="BAUKRA — inicio" className="shrink-0">
+          <BaukraWordmark className="h-[26px] w-auto" />
         </Link>
 
         <div className="hidden md:block">
@@ -68,7 +67,9 @@ export function SiteHeader() {
           </SheetTrigger>
           <SheetContent side="right" className="dark bg-black text-white">
             <SheetHeader>
-              <SheetTitle className="font-display text-white">BAUKRA</SheetTitle>
+              <SheetTitle className="text-white">
+                <BaukraWordmark className="h-5 w-auto" />
+              </SheetTitle>
             </SheetHeader>
             <div className="flex flex-col gap-1 px-4">
               {links.map((l) => (
