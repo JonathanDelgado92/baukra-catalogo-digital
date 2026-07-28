@@ -21,11 +21,11 @@ export function ProcessSection() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p) => (
             <article
               key={p.step}
-              className="min-h-[13.5rem] rounded-[1.5rem] border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-brand-green/50"
+              className="min-h-[14rem] rounded-[1.5rem] border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-brand-green/50"
             >
               <div className="font-display text-4xl font-bold tracking-tight text-brand-green">{p.step}</div>
               <h3 className="mt-5 font-display text-lg font-semibold">{p.title}</h3>

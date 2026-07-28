@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, MessageCircle } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -11,13 +11,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BaukraMark } from "@/components/baukra-logo";
+import { waLink } from "@/lib/whatsapp";
 
 const links = [
   { href: "#servicios", label: "Servicios" },
   { href: "#catalogos", label: "Catálogos" },
-  { href: "#casos-de-uso", label: "Casos de uso" },
+  { href: "#comparativa", label: "Comparativa" },
   { href: "#proceso", label: "Proceso" },
   { href: "#preguntas", label: "Preguntas" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 export function SiteHeader() {
@@ -53,10 +55,21 @@ export function SiteHeader() {
           Solicitar propuesta ↗
         </a>
 
+        <div className="flex items-center gap-4 md:hidden">
+          <a
+            href={waLink("Hola, vi el catálogo de BAUKRA y quiero cotizar.")}
+            target="_blank"
+            rel="noopener"
+            aria-label="Cotizar por WhatsApp"
+            data-whatsapp-click="mobile-nav"
+            className="text-white"
+          >
+            <MessageCircle className="size-6" aria-hidden="true" />
+          </a>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
             aria-label="Abrir menú"
-            className="text-white md:hidden"
+            className="text-white"
           >
             <Menu className="size-6" aria-hidden="true" />
           </SheetTrigger>
@@ -85,6 +98,7 @@ export function SiteHeader() {
             </div>
           </SheetContent>
         </Sheet>
+        </div>
       </nav>
     </header>
   );

@@ -2,78 +2,25 @@ export const WHATSAPP_NUMBER = "593959776611";
 
 export type Plan = {
   label: string;
+  tier: string;
   name: string;
   ideal: string;
   price: number;
   featured?: boolean;
   features: string[];
   note: string;
+  slug: string;
 };
-
-export const landingPlans: Plan[] = [
-  {
-    label: "Esencial",
-    name: "Landing Start",
-    ideal:
-      "Para profesionales, marcas personales y emprendimientos que necesitan una presencia rápida y profesional.",
-    price: 250,
-    features: [
-      "Hasta 5 secciones",
-      "Diseño responsive",
-      "Botón de WhatsApp",
-      "Formulario básico",
-      "Enlaces a redes sociales",
-      "Copy optimizado con asistencia de IA",
-      "SEO técnico inicial",
-      "Una ronda de ajustes",
-    ],
-    note: "Dominio y hosting se cotizan aparte.",
-  },
-  {
-    label: "Crecimiento",
-    name: "Landing Conversion",
-    ideal:
-      "La opción recomendada para captar contactos, cotizaciones o ventas desde campañas y redes.",
-    price: 380,
-    featured: true,
-    features: [
-      "Hasta 8 secciones",
-      "Arquitectura enfocada en conversión",
-      "Diseño UI personalizado",
-      "Copy comercial asistido por IA",
-      "Formulario y conexión con WhatsApp",
-      "Analítica inicial y pixel básico",
-      "Optimización de velocidad",
-      "Dos rondas de ajustes",
-    ],
-    note: "La opción con mejor equilibrio entre inversión y resultado.",
-  },
-  {
-    label: "Premium",
-    name: "Landing Signature",
-    ideal:
-      "Para lanzamientos, productos destacados y marcas que necesitan mayor impacto visual.",
-    price: 520,
-    features: [
-      "Dirección visual avanzada",
-      "Prototipo previo",
-      "Microinteracciones",
-      "Recursos visuales creados o mejorados con IA",
-      "Analítica inicial",
-      "Integraciones personalizadas",
-      "Pruebas responsive",
-      "Tres rondas de ajustes",
-    ],
-    note: "Ideal para propuestas visuales de alto impacto.",
-  },
-];
 
 export const catalogPlans: Plan[] = [
   {
     label: "Esencial",
+    tier: "Para comenzar",
     name: "Catálogo PDF",
-    ideal: "Para compartir productos o servicios por WhatsApp, correo y redes.",
+    ideal:
+      "Para negocios que necesitan presentar sus productos o servicios mediante un archivo visual, organizado y fácil de compartir.",
     price: 160,
+    slug: "catalogo-pdf-160",
     features: [
       "Hasta 15 productos o servicios",
       "Diseño editorial personalizado",
@@ -88,69 +35,145 @@ export const catalogPlans: Plan[] = [
   },
   {
     label: "Interactivo",
+    tier: "Mejor equilibrio",
     name: "Catálogo Web",
     ideal:
-      "La opción recomendada para organizar productos y recibir pedidos desde un solo enlace.",
+      "Para negocios que necesitan compartir un solo enlace, organizar su oferta y facilitar consultas desde WhatsApp.",
     price: 290,
     featured: true,
+    slug: "catalogo-web-290",
     features: [
       "Hasta 30 productos o servicios",
-      "Categorías y buscador",
+      "Categorías",
+      "Buscador",
       "Fichas resumidas",
       "Botones de consulta o pedido por WhatsApp",
       "Diseño responsive",
       "Optimización para celular",
-      "Navegación clara y rápida",
+      "Navegación clara",
+      "Estructura preparada para actualizaciones",
     ],
     note: "Especial para imprentas, distribuidores y negocios con variedad de productos.",
   },
   {
     label: "Premium",
+    tier: "Mayor personalización",
     name: "Catálogo Premium IA",
-    ideal: "Para marcas que necesitan mayor volumen, imagen y automatización.",
+    ideal:
+      "Para marcas que necesitan una presentación más personalizada, visualmente diferenciada y preparada para crecer.",
     price: 430,
+    slug: "catalogo-premium-ia-430",
     features: [
       "Hasta 60 productos o servicios",
       "Dirección visual premium",
-      "Generación, mejora o adaptación de imágenes con IA",
+      "Generación o mejora de imágenes con IA",
       "Filtros o navegación avanzada",
       "Formulario de cotización",
       "Analítica básica",
-      "Capacitación y soporte inicial",
+      "Capacitación",
+      "Soporte inicial",
     ],
     note: "Carga adicional según calidad del material entregado.",
+  },
+];
+
+export const landingPlans: Plan[] = [
+  {
+    label: "Esencial",
+    tier: "Para comenzar",
+    name: "Landing Start",
+    ideal: "Para empezar con una presencia digital clara, profesional y funcional.",
+    price: 250,
+    slug: "landing-start-250",
+    features: [
+      "Hasta 5 secciones",
+      "Diseño responsive",
+      "Botón de WhatsApp",
+      "Formulario básico",
+      "Enlaces a redes sociales",
+      "Copy asistido por IA",
+      "SEO técnico inicial",
+      "Una ronda de ajustes",
+    ],
+    note: "Dominio y hosting se cotizan aparte.",
+  },
+  {
+    label: "Crecimiento",
+    tier: "Mejor equilibrio",
+    name: "Landing Conversion",
+    ideal: "Para negocios que necesitan presentar una oferta específica y generar contactos.",
+    price: 380,
+    featured: true,
+    slug: "landing-conversion-380",
+    features: [
+      "Hasta 8 secciones",
+      "Arquitectura enfocada en conversión",
+      "Diseño UI personalizado",
+      "Copy comercial asistido por IA",
+      "Formulario",
+      "WhatsApp",
+      "Analítica inicial",
+      "Pixel básico",
+      "Optimización de velocidad",
+      "Dos rondas de ajustes",
+    ],
+    note: "La opción con mejor equilibrio entre inversión y resultado.",
+  },
+  {
+    label: "Premium",
+    tier: "Mayor personalización",
+    name: "Landing Signature",
+    ideal: "Para lanzamientos y marcas que necesitan mayor impacto visual y diferenciación.",
+    price: 520,
+    slug: "landing-signature-520",
+    features: [
+      "Dirección visual avanzada",
+      "Prototipo",
+      "Microinteracciones",
+      "Recursos visuales creados o mejorados con IA",
+      "Analítica inicial",
+      "Integraciones personalizadas",
+      "Pruebas responsive",
+      "Tres rondas de ajustes",
+    ],
+    note: "Ideal para propuestas visuales de alto impacto.",
   },
 ];
 
 export const webPlans: Plan[] = [
   {
     label: "Esencial",
+    tier: "Para comenzar",
     name: "Web Start",
-    ideal: "Una estructura profesional para presentar empresa y servicios.",
+    ideal: "Para empresas que necesitan organizar su información y construir una presencia digital profesional.",
     price: 500,
+    slug: "web-start-500",
     features: [
       "Hasta 5 páginas (inicio, servicios, nosotros, contacto + 1 adicional)",
       "Diseño responsive",
-      "Formulario y botón de WhatsApp",
-      "SEO inicial y analítica básica",
-      "Capacitación incluida",
+      "Formulario y WhatsApp",
+      "SEO inicial",
+      "Analítica básica",
+      "Capacitación",
     ],
     note: "Dominio, hosting y licencias se cotizan aparte.",
   },
   {
     label: "Corporativa",
+    tier: "Mejor equilibrio",
     name: "Web Growth",
-    ideal:
-      "La opción recomendada para empresas que necesitan una presencia completa y escalable.",
+    ideal: "Para negocios que necesitan una plataforma más completa para mostrar servicios, proyectos y contenido.",
     price: 780,
     featured: true,
+    slug: "web-growth-780",
     features: [
       "Hasta 8 páginas",
       "Arquitectura UX",
       "Diseño UI personalizado",
-      "Blog, portafolio o sección de proyectos",
+      "Blog, portafolio o proyectos",
       "Copy asistido por IA",
-      "Google Analytics + Search Console",
+      "Google Analytics",
+      "Search Console",
       "Optimización de velocidad",
       "Treinta días de soporte",
     ],
@@ -158,14 +181,18 @@ export const webPlans: Plan[] = [
   },
   {
     label: "Premium",
+    tier: "Mayor personalización",
     name: "Web Signature",
-    ideal: "Para marcas que requieren una experiencia digital diferenciada.",
+    ideal: "Para marcas que necesitan una experiencia digital personalizada, diferenciada y escalable.",
     price: 990,
+    slug: "web-signature-990",
     features: [
       "Hasta 12 páginas",
-      "Dirección visual avanzada y prototipo",
-      "Sistema visual UI y microinteracciones",
-      "Recursos visuales generados o mejorados con IA",
+      "Dirección visual avanzada",
+      "Prototipo",
+      "Sistema UI",
+      "Microinteracciones",
+      "Recursos visuales creados o mejorados con IA",
       "Integraciones especiales",
       "SEO inicial ampliado",
       "Sesenta días de soporte",
@@ -174,27 +201,40 @@ export const webPlans: Plan[] = [
   },
 ];
 
-export const addons = [
-  { name: "Dominio y configuración", price: "Desde $25/año", detail: "Registro y configuración inicial." },
-  { name: "Hosting administrado", price: "Desde $90/año", detail: "Alojamiento, SSL y respaldo básico." },
-  { name: "Mantenimiento web", price: "$45/mes", detail: "Actualizaciones, seguridad y pequeños cambios." },
-  { name: "Copywriting comercial", price: "Desde $90", detail: "Investigación y redacción enfocada en conversión." },
-  { name: "Banco visual con IA", price: "Desde $120", detail: "Imágenes o composiciones alineadas a la marca." },
-  { name: "Automatización de prospectos", price: "Desde $150", detail: "Formulario, correo, hoja de cálculo o CRM." },
-  { name: "Página adicional", price: "Entre $45 y $75", detail: "Según complejidad de la página." },
-  { name: "Carga de producto organizado", price: "Desde $3 c/u", detail: "Según calidad y organización de la información." },
-  { name: "Redacción, retoque o adaptación", price: "Entre $5 y $8", detail: "Por producto, según el trabajo requerido." },
-  { name: "Soporte prioritario", price: "$80/mes", detail: "Atención y ajustes con prioridad." },
+export const addonGroups = [
+  {
+    title: "Infraestructura",
+    body: "Lo necesario para que tu proyecto quede publicado, seguro y funcionando.",
+    items: [
+      { name: "Dominio y configuración", price: "Desde $25/año" },
+      { name: "Hosting administrado", price: "Desde $90/año" },
+      { name: "Mantenimiento web", price: "$45/mes" },
+      { name: "Soporte prioritario", price: "$80/mes" },
+    ],
+  },
+  {
+    title: "Contenido",
+    body: "Apoyo para que tus textos, productos e imágenes queden listos y bien presentados.",
+    items: [
+      { name: "Copywriting comercial", price: "Desde $90" },
+      { name: "Banco visual creado con IA", price: "Desde $120" },
+      { name: "Carga de productos organizada", price: "Desde $3/producto" },
+      { name: "Redacción, retoque o adaptación", price: "Entre $5 y $8" },
+    ],
+  },
+  {
+    title: "Crecimiento",
+    body: "Para cuando el proyecto necesita escalar más allá del paquete inicial.",
+    items: [
+      { name: "Automatización de prospectos", price: "Desde $150" },
+      { name: "Integraciones adicionales", price: "Se cotiza" },
+      { name: "Página adicional", price: "Entre $45 y $75" },
+      { name: "Configuración avanzada de analítica", price: "Se cotiza" },
+    ],
+  },
 ];
 
 export const compareRows = [
-  {
-    solution: "Landing page",
-    idealFor: "Campañas, servicios, eventos y lanzamientos",
-    content: "Una ruta de navegación",
-    goal: "Captar contactos o vender una oferta concreta",
-    price: "Desde $250",
-  },
   {
     solution: "Catálogo PDF",
     idealFor: "WhatsApp, correo y fuerza comercial",
@@ -204,10 +244,17 @@ export const compareRows = [
   },
   {
     solution: "Catálogo web",
-    idealFor: "Imprentas, distribuidores y negocios con variedad",
-    content: "Categorías, fichas y consultas",
-    goal: "Facilitar exploración y pedidos",
+    idealFor: "Negocios con varios productos",
+    content: "Categorías, buscador y fichas",
+    goal: "Facilitar consultas y pedidos",
     price: "Desde $290",
+  },
+  {
+    solution: "Landing page",
+    idealFor: "Campañas, servicios y lanzamientos",
+    content: "Una ruta de navegación",
+    goal: "Captar contactos o vender una oferta concreta",
+    price: "Desde $250",
   },
   {
     solution: "Página web",
@@ -218,66 +265,80 @@ export const compareRows = [
   },
 ];
 
-export const useCases = [
+export const catalogExamples = [
   {
     who: "Imprenta o papelería",
-    title: "Muchos productos, acabados y variantes",
-    body: "Necesita organizar decenas de referencias por categoría y recibir pedidos sin perder tiempo respondiendo lo mismo por WhatsApp.",
-    rec: "Recomendado: Catálogo Web",
+    categories: ["Tarjetas", "Flyers", "Lonas", "Adhesivos", "Empaques", "Acabados", "Material publicitario"],
   },
   {
-    who: "Marca de ropa o accesorios",
-    title: "Colecciones que cambian seguido",
-    body: "Comparte novedades por Instagram y WhatsApp; necesita imágenes cuidadas y una navegación rápida por categoría.",
-    rec: "Recomendado: Catálogo Premium IA",
+    who: "Ropa",
+    categories: ["Camisetas", "Hoodies", "Pantalones", "Tallas", "Colores", "Colecciones"],
   },
   {
-    who: "Profesional independiente",
-    title: "Presencia clara para captar clientes",
-    body: "Quiere mostrar sus servicios, generar confianza y recibir contactos desde una sola página.",
-    rec: "Recomendado: Landing Start o Landing Conversion",
-  },
-  {
-    who: "Distribuidor con varios proveedores",
-    title: "Volumen alto de productos y pedidos",
-    body: "Necesita un catálogo amplio, filtros de navegación y un flujo constante de consultas por WhatsApp.",
-    rec: "Recomendado: Catálogo Premium IA + automatización de prospectos",
+    who: "Servicios",
+    categories: ["Servicio", "Descripción", "Precio inicial", "Tiempo estimado", "Botón de cotización"],
   },
 ];
 
+export const catalogBenefits = [
+  "Organizar productos y servicios",
+  "Separar la oferta por categorías",
+  "Mostrar precios y características",
+  "Compartir un solo enlace",
+  "Facilitar pedidos por WhatsApp",
+  "Evitar enviar decenas de fotografías individualmente",
+  "Actualizar información con mayor facilidad",
+  "Mejorar la presentación profesional",
+  "Revisar productos desde el celular",
+];
+
 export const process = [
-  { step: "01", title: "Diagnóstico", body: "Revisamos objetivos, público, oferta, referencias y materiales disponibles." },
-  { step: "02", title: "Estrategia", body: "Definimos estructura, mensajes, jerarquías y recorrido del usuario." },
-  { step: "03", title: "Dirección visual", body: "Construimos el concepto gráfico, sistema UI o prototipo según el paquete." },
-  { step: "04", title: "Producción", body: "Diseñamos y desarrollamos usando IA como apoyo para contenido, imágenes y código." },
-  { step: "05", title: "Revisión", body: "Presentamos el proyecto, consolidamos observaciones y aplicamos los ajustes incluidos." },
-  { step: "06", title: "Lanzamiento", body: "Publicamos, comprobamos responsividad y entregamos capacitación básica." },
+  { step: "01", title: "Entendemos", body: "Objetivos, público, oferta, productos, servicios y materiales disponibles." },
+  { step: "02", title: "Estructuramos", body: "Organización del contenido, propuesta de valor, jerarquías y experiencia." },
+  { step: "03", title: "Diseñamos y desarrollamos", body: "Dirección visual, prototipo, producción, programación y optimización." },
+  { step: "04", title: "Revisamos y publicamos", body: "Ajustes, pruebas responsive, lanzamiento, capacitación y soporte contratado." },
 ];
 
 export const faqs = [
   {
-    q: "¿Cuánto tiempo toma un proyecto?",
-    a: "Depende del paquete elegido y de qué tan lista esté tu información (textos, precios, imágenes). Te confirmamos un rango de tiempo concreto en la propuesta.",
+    q: "¿Qué servicio necesita mi negocio?",
+    a: "Depende de cuántos productos o servicios tengas y qué acción esperas del cliente. Si tienes varios productos, un catálogo digital suele ser lo más práctico; si necesitas presentar una oferta puntual, una landing page funciona mejor. Escríbenos y te orientamos sin compromiso.",
   },
   {
-    q: "¿Qué pasa si no tengo fotos o textos listos?",
-    a: "No hay problema. Nos apoyamos en redacción asistida por IA y recursos visuales de referencia que después puedes reemplazar por tus propios materiales.",
+    q: "¿Cuál es la diferencia entre un catálogo PDF y un catálogo web?",
+    a: "El catálogo PDF es un archivo visual pensado para compartir por WhatsApp o correo. El catálogo web es un enlace interactivo con categorías, buscador y botones de pedido, ideal si actualizas tu oferta seguido.",
   },
   {
-    q: "¿Puedo editar el contenido después de la entrega?",
-    a: "Sí. Te explicamos cómo actualizar textos, precios y el número de WhatsApp sin depender de un desarrollador para cambios simples.",
+    q: "¿Puedo actualizar los productos después?",
+    a: "Sí. Te explicamos cómo hacer cambios simples tú mismo; para actualizaciones más grandes, el complemento de carga de productos organizada está pensado justamente para eso.",
   },
   {
     q: "¿El dominio y el hosting están incluidos?",
-    a: "No. Se cotizan aparte según la plataforma que elijas; en la sección de complementos encuentras valores de referencia.",
+    a: "No. Se cotizan aparte según la plataforma que elijas; en la sección de servicios complementarios encuentras valores de referencia.",
   },
   {
-    q: "¿Cómo funciona el pago?",
+    q: "¿Debo entregar los textos y las fotografías?",
+    a: "Idealmente sí, pero no es obligatorio. Si no los tienes listos, nos apoyamos en redacción asistida por IA y recursos visuales de referencia que luego puedes reemplazar.",
+  },
+  {
+    q: "¿La página funcionará correctamente en celular?",
+    a: "Sí. Todos los paquetes son responsive y se prueban específicamente en pantallas de celular, que es donde la mayoría de tus clientes te va a encontrar.",
+  },
+  {
+    q: "¿Cuántos cambios están incluidos?",
+    a: "Depende del paquete: cada uno indica el número de rondas de ajustes incluidas en su lista de características, arriba en la sección de servicios.",
+  },
+  {
+    q: "¿Cómo se realizan los pagos?",
     // TODO: confirmar la política de pagos definitiva de BAUKRA y ajustar este texto
     a: "Se coordina un anticipo para iniciar el proyecto y el saldo restante antes de la entrega final. Los detalles se confirman en la propuesta.",
   },
   {
-    q: "¿Qué pasa si no sé qué paquete necesito?",
-    a: "Escríbenos por WhatsApp contándonos qué vendes y cuántos productos o servicios tienes. Te recomendamos la opción más adecuada sin compromiso.",
+    q: "¿Puedo agregar más productos posteriormente?",
+    a: "Sí, siempre que no superes el límite de tu paquete. Si necesitas más, el complemento de carga de productos organizada cubre justamente ese caso.",
+  },
+  {
+    q: "¿La inteligencia artificial reemplaza el trabajo de diseño?",
+    a: "No. La inteligencia artificial se utiliza como una herramienta para agilizar investigación, producción, contenido y optimización. Las decisiones estratégicas, visuales y de experiencia permanecen bajo dirección humana.",
   },
 ];

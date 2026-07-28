@@ -46,21 +46,44 @@ export function ContactSection() {
               <span className="h-px w-6 bg-brand-green" />
               Conversemos
             </div>
-            <h2 className="mt-4 font-display text-[clamp(2.4rem,5.2vw,4.8rem)] font-semibold leading-[0.96] tracking-tight">
-              Tu negocio merece una experiencia más clara.
+            <h2 className="mt-4 max-w-lg font-display text-[clamp(1.7rem,2.9vw,2.6rem)] font-semibold leading-[1.15] tracking-tight text-balance">
+              Tu negocio ya tiene algo que mostrar. Hagamos que sea más fácil
+              encontrarlo, entenderlo y elegirlo.
             </h2>
             <p className="mt-5 max-w-md text-white/65">
-              Cuéntanos qué vendes, cuántos productos o servicios tienes y qué
-              acción esperas de tus clientes. Prepararemos una propuesta
-              ajustada a tu necesidad.
+              Cuéntanos qué vendes, cuántos productos o servicios necesitas
+              presentar y qué resultado esperas. Te recomendaremos la solución
+              adecuada sin obligarte a contratar un paquete que no necesitas.
             </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href={waLink("Hola, quiero cotizar mi proyecto con BAUKRA.")}
+                target="_blank"
+                rel="noopener"
+                data-whatsapp-click="cta-final-primary"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-4 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-light"
+              >
+                Cotizar mi proyecto ↗
+              </a>
+              <a
+                href={waLink(
+                  "Hola, vi el catálogo de BAUKRA. Necesito orientación para elegir entre un catálogo digital, una landing page o una página web.",
+                )}
+                target="_blank"
+                rel="noopener"
+                data-whatsapp-click="cta-final-secondary"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
+              >
+                Necesito orientación
+              </a>
+            </div>
           </div>
 
           <form
             onSubmit={handleSubmit}
             className="relative z-10 mt-10 rounded-[1.6rem] bg-white p-6 text-brand-black md:mt-0"
           >
-            <h3 className="font-display text-lg font-semibold">Solicitar propuesta</h3>
+            <h3 className="font-display text-lg font-semibold">O completa el formulario</h3>
             <div className="mt-4 grid gap-3">
               <div className="grid gap-1.5">
                 <label htmlFor="name" className="text-xs font-bold text-muted-foreground">Nombre o empresa</label>

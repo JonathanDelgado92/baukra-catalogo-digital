@@ -38,47 +38,39 @@ export function Hero() {
               <span className="h-px w-6 bg-brand-green" />
               Estudio digital · Ecuador
             </div>
-            <h1 className="mt-6 font-display text-[clamp(2.75rem,7.2vw,6.6rem)] font-semibold leading-[0.8] tracking-tight">
-              Diseño que
-              <span className="block text-brand-green">activa marcas.</span>
+            <h1 className="mt-6 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-balance">
+              Convierte tus productos y servicios en una experiencia fácil de
+              <span className="text-brand-green"> explorar, compartir y elegir.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-white/70">
-            Landing pages, catálogos digitales y páginas web diseñadas a medida, con
-            dirección visual, estrategia de conversión e inteligencia artificial
-            aplicada bajo criterio profesional.
+            Creamos catálogos digitales, landing pages y sitios web diseñados a medida
+            para presentar mejor tu negocio y generar consultas desde WhatsApp, con
+            tecnología aplicada bajo dirección humana.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a
               href="#servicios"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-4 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-green-light hover:shadow-[0_14px_30px_rgba(66,171,56,0.3)]"
             >
-              Ver servicios ↓
+              Explorar servicios ↓
             </a>
-            <button
-              onClick={() => window.print()}
+            <a
+              href={waLink(
+                "Hola, vi el catálogo de BAUKRA. Necesito orientación para elegir entre un catálogo digital, una landing page o una página web.",
+              )}
+              target="_blank"
+              rel="noopener"
+              data-whatsapp-click="hero-secondary"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
             >
-              Guardar como PDF
-            </button>
+              Cuéntame qué necesitas
+            </a>
           </div>
           <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-xs uppercase tracking-[0.08em] text-white/50">
             <span><b className="text-white">Dirección visual</b> a medida</span>
             <span><b className="text-white">IA aplicada</b> con criterio humano</span>
             <span><b className="text-white">100%</b> responsive</span>
           </div>
-          <p className="mt-6 text-sm text-white/60">
-            ¿No sabes qué necesitas todavía?{" "}
-            <a
-              href={waLink(
-                "Hola, no estoy seguro de qué solución necesito para mi negocio. ¿Me pueden ayudar a elegir?",
-              )}
-              target="_blank"
-              rel="noopener"
-              className="font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green"
-            >
-              Escríbenos y te orientamos →
-            </a>
-          </p>
           </div>
         </motion.div>
 

@@ -20,7 +20,8 @@ export function CompareSection() {
           </p>
         </div>
 
-        <div className="overflow-x-auto rounded-3xl border border-border">
+        {/* Desktop: table. Hidden below 768px to avoid horizontal scroll. */}
+        <div className="hidden overflow-x-auto rounded-3xl border border-border md:block">
           <table className="w-full min-w-[48rem] border-collapse bg-card text-sm">
             <thead>
               <tr>
@@ -48,6 +49,32 @@ export function CompareSection() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile: stacked cards, no horizontal scroll. */}
+        <div className="grid gap-3.5 md:hidden">
+          {compareRows.map((r) => (
+            <div key={r.solution} className="rounded-2xl border border-border bg-card p-5">
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="font-display text-base font-semibold">{r.solution}</h3>
+                <strong className="shrink-0 tabular-nums text-brand-green">{r.price}</strong>
+              </div>
+              <dl className="mt-3 grid gap-2 text-sm">
+                <div className="flex gap-1.5">
+                  <dt className="shrink-0 font-semibold text-muted-foreground">Ideal para:</dt>
+                  <dd>{r.idealFor}</dd>
+                </div>
+                <div className="flex gap-1.5">
+                  <dt className="shrink-0 font-semibold text-muted-foreground">Contenido:</dt>
+                  <dd>{r.content}</dd>
+                </div>
+                <div className="flex gap-1.5">
+                  <dt className="shrink-0 font-semibold text-muted-foreground">Objetivo:</dt>
+                  <dd>{r.goal}</dd>
+                </div>
+              </dl>
+            </div>
+          ))}
         </div>
       </div>
     </section>

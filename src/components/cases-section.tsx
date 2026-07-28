@@ -1,4 +1,4 @@
-import { useCases } from "@/lib/data";
+import { catalogBenefits, catalogExamples } from "@/lib/data";
 import { BlurFade } from "@/components/ui/blur-fade";
 
 export function CasesSection() {
@@ -9,41 +9,53 @@ export function CasesSection() {
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-black/70">
               <span className="h-px w-6 bg-brand-green" />
-              Ejemplos de uso
+              Por qué un catálogo digital
             </div>
             <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
-              Encuentra tu <span className="text-brand-green">punto de partida.</span>
+              Un enlace que <span className="text-brand-green">organiza todo.</span>
             </h2>
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
-            Ejemplos ilustrativos de cómo distintos tipos de negocio suelen usar
-            cada solución. Sirven como referencia, no como casos reales.
+            Un catálogo digital te ayuda a presentar tu negocio de forma más clara
+            y a recibir consultas sin depender de decenas de fotos sueltas.
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-12">
-          {useCases.map((c, i) => {
-            const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-5", "md:col-span-7"];
-            const offsets = ["", "md:mt-12", "", "md:mt-12"];
-            return (
-              <BlurFade key={c.who} inView delay={i * 0.07} className={`${spans[i]} ${offsets[i]}`}>
-                <article className="h-full rounded-[1.5rem] border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
-                  <div className="text-[0.68rem] font-extrabold uppercase tracking-[0.1em] text-brand-green">
-                    {c.who}
-                  </div>
-                  <h3 className="mt-2.5 font-display text-lg font-semibold">{c.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{c.body}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand-green-soft px-3.5 py-2 text-sm font-semibold text-[#2a7423]">
-                    {c.rec}
-                  </span>
-                </article>
-              </BlurFade>
-            );
-          })}
+        <ul className="mb-14 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+          {catalogBenefits.map((b) => (
+            <li key={b} className="flex items-start gap-2.5 text-sm">
+              <span className="mt-0.5 font-bold text-brand-green">✓</span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mb-5 text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">
+          Ejemplo conceptual de aplicación
         </div>
-        <p className="mt-7 text-sm text-muted-foreground/80">
-          ¿No encuentras tu tipo de negocio? Cuéntanos por WhatsApp qué vendes y
-          te recomendamos la opción más adecuada.
+        <div className="grid gap-4 md:grid-cols-3">
+          {catalogExamples.map((c, i) => (
+            <BlurFade key={c.who} inView delay={i * 0.08}>
+              <article className="h-full rounded-[1.5rem] border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
+                <h3 className="font-display text-lg font-semibold">{c.who}</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Categorías sugeridas</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {c.categories.map((cat) => (
+                    <span
+                      key={cat}
+                      className="rounded-full bg-brand-green-soft px-3 py-1.5 text-xs font-semibold text-[#2a7423]"
+                    >
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </BlurFade>
+          ))}
+        </div>
+        <p className="mt-6 text-xs text-muted-foreground/80">
+          Ejemplos ilustrativos para mostrar cómo se vería la organización por
+          categorías. No representan clientes reales ni proyectos entregados de BAUKRA.
         </p>
       </div>
     </section>

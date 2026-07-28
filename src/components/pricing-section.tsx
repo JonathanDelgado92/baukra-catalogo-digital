@@ -7,8 +7,8 @@ import { landingPlans, catalogPlans, webPlans, type Plan } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const groups = [
-  { value: "landing", label: "Landing pages", plans: landingPlans },
   { value: "catalogo", label: "Catálogos digitales", plans: catalogPlans },
+  { value: "landing", label: "Landing pages", plans: landingPlans },
   { value: "web", label: "Páginas web", plans: webPlans },
 ];
 
@@ -27,10 +27,22 @@ function PlanCard({ plan }: { plan: Plan }) {
           Recomendado
         </span>
       )}
-      <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-green">
-        {plan.label}
+      <div className="flex items-center justify-between gap-3 pr-16">
+        <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-green">
+          {plan.label}
+        </div>
+        {!plan.featured && (
+          <span className="rounded-full bg-muted px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.06em] text-muted-foreground">
+            {plan.tier}
+          </span>
+        )}
       </div>
       <h3 className="mt-2.5 font-display text-2xl font-semibold">{plan.name}</h3>
+      {plan.featured && (
+        <div className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.06em] text-white/50">
+          {plan.tier}
+        </div>
+      )}
       <p className={cn("mt-2 min-h-[2.8rem] text-sm", plan.featured ? "text-white/70" : "text-muted-foreground")}>
         {plan.ideal}
       </p>
@@ -56,6 +68,8 @@ function PlanCard({ plan }: { plan: Plan }) {
         scroll={true}
         data-plan={plan.name}
         data-price={plan.price}
+        data-service={plan.slug.startsWith("catalogo") ? "catalogo-digital" : plan.slug.startsWith("landing") ? "landing-page" : "pagina-web"}
+        data-package={plan.slug}
         className={cn(
           "select-plan mt-auto inline-flex items-center justify-center rounded-full px-5 py-3.5 text-sm font-semibold transition-transform hover:-translate-y-0.5",
           plan.featured ? "bg-brand-green text-white" : "bg-brand-black text-white",
@@ -72,7 +86,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 }
 
 export function PricingSection() {
-  const [active, setActive] = useState("landing");
+  const [active, setActive] = useState("catalogo");
 
   return (
     <section id="servicios" className="bg-background py-24 md:py-32">
