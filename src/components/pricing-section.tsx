@@ -1,0 +1,122 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { landingPlans, catalogPlans, webPlans, type Plan } from "@/lib/data";
+import { cn } from "@/lib/utils";
+
+const groups = [
+  { value: "landing", label: "Landing pages", plans: landingPlans },
+  { value: "catalogo", label: "Catálogos digitales", plans: catalogPlans },
+  { value: "web", label: "Páginas web", plans: webPlans },
+];
+
+function PlanCard({ plan }: { plan: Plan }) {
+  return (
+    <article
+      className={cn(
+        "relative flex min-h-[36rem] flex-col overflow-hidden rounded-[1.6rem] border p-7 transition-transform duration-300 hover:-translate-y-1.5",
+        plan.featured
+          ? "dark border-brand-black bg-brand-black text-white shadow-[0_24px_70px_rgba(15,17,13,0.18)]"
+          : "border-border bg-background",
+      )}
+    >
+      {plan.featured && (
+        <span className="absolute right-[-2.6rem] top-6 rotate-[37deg] bg-brand-green px-12 py-2 text-[0.6rem] font-extrabold uppercase tracking-[0.1em] text-white">
+          Recomendado
+        </span>
+      )}
+      <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-green">
+        {plan.label}
+      </div>
+      <h3 className="mt-2.5 font-display text-2xl font-semibold">{plan.name}</h3>
+      <p className={cn("mt-2 min-h-[2.8rem] text-sm", plan.featured ? "text-white/70" : "text-muted-foreground")}>
+        {plan.ideal}
+      </p>
+      <div className="my-6 flex items-start gap-1">
+        <span className="mt-2.5 text-base font-extrabold text-brand-green">$</span>
+        <span className="font-display text-6xl font-semibold tracking-tight tabular-nums">
+          {plan.price}
+        </span>
+        <span className={cn("mb-1.5 self-end text-xs", plan.featured ? "text-white/60" : "text-muted-foreground")}>
+          desde
+        </span>
+      </div>
+      <ul className="mb-7 grid gap-3 text-sm">
+        {plan.features.map((f) => (
+          <li key={f} className="flex gap-2.5">
+            <span className="font-bold text-brand-green">✓</span>
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+      <Link
+        href={`/?plan=${encodeURIComponent(plan.name)}#contacto`}
+        scroll={true}
+        data-plan={plan.name}
+        data-price={plan.price}
+        className={cn(
+          "select-plan mt-auto inline-flex items-center justify-center rounded-full px-5 py-3.5 text-sm font-semibold transition-transform hover:-translate-y-0.5",
+          plan.featured ? "bg-brand-green text-white" : "bg-brand-black text-white",
+        )}
+        aria-label={`Solicitar el plan ${plan.name}, desde $${plan.price}`}
+      >
+        Solicitar este plan
+      </Link>
+      <div className={cn("mt-3.5 text-center text-xs", plan.featured ? "text-white/50" : "text-muted-foreground")}>
+        {plan.note}
+      </div>
+    </article>
+  );
+}
+
+export function PricingSection() {
+  const [active, setActive] = useState("landing");
+
+  return (
+    <section id="servicios" className="bg-background py-24 md:py-32">
+      <div className="mx-auto w-[min(calc(100%-2.5rem),75rem)]">
+        <div className="mb-11 grid gap-8 md:grid-cols-2 md:items-end">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-black/70">
+              <span className="h-px w-6 bg-brand-green" />
+              Servicios y precios
+            </div>
+            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
+              Elige la solución <span className="text-brand-green">correcta.</span>
+            </h2>
+          </div>
+          <p className="max-w-md text-muted-foreground md:justify-self-end">
+            Tres soluciones para negocios ecuatorianos que necesitan una presencia
+            digital profesional. Los precios son de partida y pueden ajustarse
+            según el alcance final.
+          </p>
+        </div>
+
+        <Tabs value={active} onValueChange={setActive}>
+          <TabsList className="mb-9 h-auto flex-wrap gap-2 bg-transparent p-0">
+            {groups.map((g) => (
+              <TabsTrigger
+                key={g.value}
+                value={g.value}
+                className="rounded-full border border-border bg-background px-5 py-2.5 font-semibold text-muted-foreground data-[state=active]:border-brand-black data-[state=active]:bg-brand-black data-[state=active]:text-white"
+              >
+                {g.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {groups.map((g) => (
+            <TabsContent key={g.value} value={g.value} className="mt-0">
+              <div className="grid gap-4 md:grid-cols-3">
+                {g.plans.map((p) => (
+                  <PlanCard key={p.name} plan={p} />
+                ))}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </section>
+  );
+}

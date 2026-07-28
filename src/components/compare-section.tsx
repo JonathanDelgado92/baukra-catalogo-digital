@@ -1,0 +1,55 @@
+import { compareRows } from "@/lib/data";
+
+export function CompareSection() {
+  return (
+    <section id="comparativa" className="bg-background py-24 md:py-32">
+      <div className="mx-auto w-[min(calc(100%-2.5rem),75rem)]">
+        <div className="mb-11 grid gap-8 md:grid-cols-2 md:items-end">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-black/70">
+              <span className="h-px w-6 bg-brand-green" />
+              Comparativa rápida
+            </div>
+            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight">
+              ¿Qué necesita <span className="text-brand-green">tu negocio?</span>
+            </h2>
+          </div>
+          <p className="max-w-md text-muted-foreground md:justify-self-end">
+            La elección depende de cuánta información debes presentar, qué acción
+            esperas del cliente y cuánto necesita crecer la solución.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto rounded-3xl border border-border">
+          <table className="w-full min-w-[48rem] border-collapse bg-card text-sm">
+            <thead>
+              <tr>
+                {["Solución", "Ideal para", "Contenido", "Objetivo", "Inversión"].map((h) => (
+                  <th
+                    key={h}
+                    className="bg-brand-black px-5 py-4 text-left text-xs font-bold uppercase tracking-[0.09em] text-white"
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {compareRows.map((r) => (
+                <tr key={r.solution} className="border-b border-border last:border-0 transition-colors hover:bg-brand-paper">
+                  <td className="px-5 py-4 font-bold">{r.solution}</td>
+                  <td className="px-5 py-4">{r.idealFor}</td>
+                  <td className="px-5 py-4">{r.content}</td>
+                  <td className="px-5 py-4">{r.goal}</td>
+                  <td className="px-5 py-4">
+                    <strong className="tabular-nums text-brand-green">{r.price}</strong>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+}
