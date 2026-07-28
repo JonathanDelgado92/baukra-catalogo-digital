@@ -15,7 +15,7 @@ export function CasesSection() {
             </div>
             <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
-              segments={[{ text: "Un enlace que " }, { text: "organiza todo.", className: "text-brand-green" }]}
+              segments={[{ text: "Un enlace que " }, { text: "organiza todo.", className: "text-brand-green-ink" }]}
             />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
@@ -27,7 +27,7 @@ export function CasesSection() {
         <ul className="mb-14 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
           {catalogBenefits.map((b) => (
             <li key={b} className="flex items-start gap-2.5 text-sm">
-              <span className="mt-0.5 font-bold text-brand-green">✓</span>
+              <span className="mt-0.5 font-bold text-brand-green-ink">✓</span>
               <span>{b}</span>
             </li>
           ))}
@@ -46,7 +46,7 @@ export function CasesSection() {
                   {c.categories.map((cat) => (
                     <span
                       key={cat}
-                      className="rounded-full bg-brand-green-soft px-3 py-1.5 text-xs font-semibold text-[#2a7423]"
+                      className="rounded-full bg-brand-green-soft px-3 py-1.5 text-xs font-semibold text-brand-green-ink"
                     >
                       {cat}
                     </span>

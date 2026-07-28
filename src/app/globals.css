@@ -13,6 +13,11 @@
   --color-brand-green: #42ab38;
   --color-brand-green-light: #57c74b;
   --color-brand-green-soft: #eaf6e8;
+  /* Accessible green for TEXT on light backgrounds. The brand green (#42ab38)
+     only reaches 2.95:1 on white — below the WCAG AA 4.5:1 minimum. This
+     darker tone hits 5.8:1 while reading as the same brand color.
+     Use text-brand-green only on dark backgrounds (5.72:1 there). */
+  --color-brand-green-ink: #2a7423;
   --color-brand-black: #1d1d1b;
   --color-brand-black-deep: #141412;
   --color-brand-paper: #f5f6f2;

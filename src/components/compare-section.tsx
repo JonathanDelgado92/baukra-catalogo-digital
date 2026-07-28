@@ -13,7 +13,7 @@ export function CompareSection() {
             </div>
             <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
-              segments={[{ text: "¿Qué necesita " }, { text: "tu negocio?", className: "text-brand-green" }]}
+              segments={[{ text: "¿Qué necesita " }, { text: "tu negocio?", className: "text-brand-green-ink" }]}
             />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
@@ -45,7 +45,7 @@ export function CompareSection() {
                   <td className="px-5 py-4">{r.content}</td>
                   <td className="px-5 py-4">{r.goal}</td>
                   <td className="px-5 py-4">
-                    <strong className="tabular-nums text-brand-green">{r.price}</strong>
+                    <strong className="tabular-nums text-brand-green-ink">{r.price}</strong>
                   </td>
                 </tr>
               ))}
@@ -59,7 +59,7 @@ export function CompareSection() {
             <div key={r.solution} className="rounded-2xl border border-border bg-card p-5">
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-display text-base font-semibold">{r.solution}</h3>
-                <strong className="shrink-0 tabular-nums text-brand-green">{r.price}</strong>
+                <strong className="shrink-0 tabular-nums text-brand-green-ink">{r.price}</strong>
               </div>
               <dl className="mt-3 grid gap-2 text-sm">
                 <div className="flex gap-1.5">

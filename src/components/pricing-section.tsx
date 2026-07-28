@@ -17,6 +17,9 @@ const groups = [
 
 function PlanCardInner({ plan }: { plan: Plan }) {
   const Wrapper = plan.featured ? "article" : MagicCard;
+  // Featured card is dark, so brand green passes contrast there. The other
+  // cards sit on a light background and need the darker accessible green.
+  const greenText = plan.featured ? "text-brand-green" : "text-brand-green-ink";
   return (
     <Wrapper
       className={cn(
@@ -38,7 +41,7 @@ function PlanCardInner({ plan }: { plan: Plan }) {
         </span>
       )}
       <div className="flex items-center justify-between gap-3 pr-16">
-        <div className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-green">
+        <div className={cn("text-xs font-extrabold uppercase tracking-[0.12em]", greenText)}>
           {plan.label}
         </div>
         {!plan.featured && (
@@ -57,7 +60,7 @@ function PlanCardInner({ plan }: { plan: Plan }) {
         {plan.ideal}
       </p>
       <div className="my-6 flex items-start gap-1">
-        <span className="mt-2.5 text-base font-extrabold text-brand-green">$</span>
+        <span className={cn("mt-2.5 text-base font-extrabold", greenText)}>$</span>
         <span className="font-display text-6xl font-semibold tracking-tight tabular-nums">
           {plan.price}
         </span>
@@ -68,7 +71,7 @@ function PlanCardInner({ plan }: { plan: Plan }) {
       <ul className="mb-7 grid gap-3 text-sm">
         {plan.features.map((f) => (
           <li key={f} className="flex gap-2.5">
-            <span className="font-bold text-brand-green">✓</span>
+            <span className={cn("font-bold", greenText)} aria-hidden="true">✓</span>
             <span>{f}</span>
           </li>
         ))}
@@ -119,7 +122,7 @@ export function PricingSection() {
             </div>
             <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
-              segments={[{ text: "Elige la solución " }, { text: "correcta.", className: "text-brand-green" }]}
+              segments={[{ text: "Elige la solución " }, { text: "correcta.", className: "text-brand-green-ink" }]}
             />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
@@ -130,12 +133,17 @@ export function PricingSection() {
         </div>
 
         <Tabs value={active} onValueChange={setActive}>
-          <TabsList className="mb-9 h-auto flex-wrap gap-2 bg-transparent p-0">
+          {/* Segmented control: same carbon-black + rounded language as the
+              featured pricing card, so the selector reads as part of the set. */}
+          <TabsList className="mx-auto mb-10 flex h-auto w-fit max-w-full flex-wrap justify-center gap-1.5 rounded-full border border-border bg-card p-1.5 shadow-[0_8px_30px_rgba(25,28,22,0.05)]">
             {groups.map((g) => (
               <TabsTrigger
                 key={g.value}
                 value={g.value}
-                className="rounded-full border border-border bg-background px-5 py-2.5 font-semibold text-muted-foreground data-[state=active]:border-brand-black data-[state=active]:bg-brand-black data-[state=active]:text-white"
+                // `text-white!` is deliberate: the base TabsTrigger sets
+                // `data-active:text-foreground` (near-black) at the same
+                // specificity, which otherwise wins and renders black-on-black.
+                className="h-auto flex-none rounded-full border-transparent px-6 py-3 text-sm font-semibold text-muted-foreground transition-all duration-300 after:hidden hover:text-brand-black data-active:bg-brand-black data-active:text-white! data-active:shadow-[0_6px_18px_rgba(29,29,27,0.3)]"
               >
                 {g.label}
               </TabsTrigger>

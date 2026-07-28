@@ -14,7 +14,7 @@ export function ProcessSection() {
             </div>
             <ScrollReveal
               containerClassName="mt-4 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-semibold leading-[0.97] tracking-tight"
-              segments={[{ text: "Un proceso claro, de principio a " }, { text: "lanzamiento.", className: "text-brand-green" }]}
+              segments={[{ text: "Un proceso claro, de principio a " }, { text: "lanzamiento.", className: "text-brand-green-ink" }]}
             />
           </div>
           <p className="max-w-md text-muted-foreground md:justify-self-end">
@@ -30,7 +30,7 @@ export function ProcessSection() {
               key={p.step}
               className="min-h-[14rem] rounded-[1.5rem] border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-brand-green/50"
             >
-              <div className="font-display text-4xl font-bold tracking-tight text-brand-green">{p.step}</div>
+              <div className="font-display text-4xl font-bold tracking-tight text-brand-green-ink">{p.step}</div>
               <h3 className="mt-5 font-display text-lg font-semibold">{p.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.body}</p>
             </MagicCard>

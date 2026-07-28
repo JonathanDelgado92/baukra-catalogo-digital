@@ -46,7 +46,7 @@ export function BenefitsSection() {
           {items.map((it, i) => (
             <BlurFade key={it.n} inView delay={i * 0.08}>
               <MagicCard className="grid grid-cols-[3rem_1fr] gap-4 rounded-[1.4rem] border border-border bg-card p-6 shadow-[0_8px_30px_rgba(25,28,22,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(25,28,22,0.08)]">
-                <div className="flex size-11 items-center justify-center rounded-2xl bg-brand-green-soft font-display text-sm font-bold text-brand-green">
+                <div className="flex size-11 items-center justify-center rounded-2xl bg-brand-green-soft font-display text-sm font-bold text-brand-green-ink">
                   {it.n}
                 </div>
                 <div>

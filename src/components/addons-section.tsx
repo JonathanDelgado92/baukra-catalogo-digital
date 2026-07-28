@@ -34,7 +34,7 @@ export function AddonsSection() {
                 {group.items.map((item) => (
                   <li key={item.name} className="flex items-baseline justify-between gap-3 text-sm">
                     <span>{item.name}</span>
-                    <span className="shrink-0 font-semibold text-brand-green tabular-nums">{item.price}</span>
+                    <span className="shrink-0 font-semibold text-brand-green-ink tabular-nums">{item.price}</span>
                   </li>
                 ))}
               </ul>

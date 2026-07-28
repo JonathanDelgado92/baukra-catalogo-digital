@@ -44,7 +44,7 @@ function FaqRow({ q, a, index, delay }: { q: string; a: string; index: number; d
           style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
         >
           <div className="overflow-hidden">
-            <p id={`faq-answer-${index}`} className="px-5 pb-4 text-sm text-muted-foreground">
+            <p id={`faq-answer-${index}`} className="px-5 pb-4 text-sm leading-relaxed text-[#3d423a]">
               {a}
             </p>
           </div>
