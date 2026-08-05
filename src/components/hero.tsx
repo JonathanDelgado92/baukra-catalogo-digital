@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Marquee } from "@/components/ui/marquee";
+import { HeroVideo } from "@/components/hero-video";
 import { waLink } from "@/lib/whatsapp";
 
 const chips = ["Landing pages", "Catálogos digitales", "Páginas web", "Dirección de arte", "Estrategia de conversión", "IA aplicada"];
@@ -9,6 +10,7 @@ const chips = ["Landing pages", "Catálogos digitales", "Páginas web", "Direcci
 export function Hero() {
   return (
     <section id="inicio" className="dark relative overflow-hidden bg-black text-white">
+      <HeroVideo />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 -top-52 h-[42rem] w-[42rem] rounded-full bg-[radial-gradient(circle,rgba(66,171,56,0.32),transparent_68%)]"

@@ -135,15 +135,16 @@ export function PricingSection() {
         <Tabs value={active} onValueChange={setActive}>
           {/* Segmented control: same carbon-black + rounded language as the
               featured pricing card, so the selector reads as part of the set. */}
-          <TabsList className="mx-auto mb-10 flex h-auto w-fit max-w-full flex-wrap justify-center gap-1.5 rounded-full border border-border bg-card p-1.5 shadow-[0_8px_30px_rgba(25,28,22,0.05)]">
+          {/* Segmented control. The `!` modifiers are load-bearing: the base
+              Tabs primitive pins the list to h-8 and forces the active tab's
+              colour/shadow via higher-specificity `group-data-*` selectors,
+              which otherwise clip the taller pill and wash out its label. */}
+          <TabsList className="mx-auto mb-10 flex h-auto! w-fit max-w-full flex-wrap items-center justify-center gap-1 rounded-full border border-border bg-card p-1.5">
             {groups.map((g) => (
               <TabsTrigger
                 key={g.value}
                 value={g.value}
-                // `text-white!` is deliberate: the base TabsTrigger sets
-                // `data-active:text-foreground` (near-black) at the same
-                // specificity, which otherwise wins and renders black-on-black.
-                className="h-auto flex-none rounded-full border-transparent px-6 py-3 text-sm font-semibold text-muted-foreground transition-all duration-300 after:hidden hover:text-brand-black data-active:bg-brand-black data-active:text-white! data-active:shadow-[0_6px_18px_rgba(29,29,27,0.3)]"
+                className="h-auto flex-none rounded-full border-transparent px-6 py-2.5 text-sm font-semibold text-muted-foreground shadow-none! transition-colors duration-200 after:hidden hover:text-brand-black data-active:bg-brand-black data-active:text-white!"
               >
                 {g.label}
               </TabsTrigger>

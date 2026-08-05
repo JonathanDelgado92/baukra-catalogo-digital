@@ -153,6 +153,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Decorative absolutely-positioned layers (ElectricBorder's canvas bleeds
+     60px past its card, hero glow orbs, floating chips) must never create a
+     horizontal scrollbar on narrow viewports. `clip` rather than `hidden`:
+     hidden would turn these into scroll containers and break position:sticky. */
+  html,
+  body {
+    overflow-x: clip;
+  }
   html {
     @apply font-sans scroll-smooth;
   }
