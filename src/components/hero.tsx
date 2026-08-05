@@ -153,7 +153,7 @@ export function Hero() {
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
               <span className="h-px w-6 bg-brand-green" />
-              Estudio digital · Ecuador
+              Diseño web para negocios ecuatorianos
             </div>
             <h1 className="mt-6 max-w-2xl font-display text-[clamp(1.9rem,3.6vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-balance">
               Convierte tus productos y servicios en una experiencia fácil de

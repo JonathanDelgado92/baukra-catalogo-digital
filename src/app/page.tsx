@@ -11,6 +11,7 @@ import { AddonsSection } from "@/components/addons-section";
 import { FaqSection } from "@/components/faq-section";
 import { ContactSection } from "@/components/contact-section";
 import { SiteFooter } from "@/components/site-footer";
+import { WhatsAppFab } from "@/components/whatsapp-fab";
 
 export default function Home() {
   return (
@@ -38,6 +39,7 @@ export default function Home() {
         </Suspense>
       </main>
       <SiteFooter />
+      <WhatsAppFab />
     </>
   );
 }

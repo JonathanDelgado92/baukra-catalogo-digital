@@ -75,7 +75,7 @@ export function FaqSection() {
           </p>
         </div>
 
-        <div className="mx-auto max-h-[34rem] max-w-3xl overflow-y-auto rounded-[1.6rem] bg-white p-5 shadow-[0_24px_70px_rgba(0,0,0,0.35)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-black/10 [&::-webkit-scrollbar-track]:bg-transparent">
+        <div className="mx-auto max-w-3xl rounded-[1.6rem] bg-white p-5 shadow-[0_24px_70px_rgba(0,0,0,0.35)]">
           {faqs.map((f, i) => (
             <FaqRow key={f.q} q={f.q} a={f.a} index={i} delay={i * 0.04} />
           ))}
